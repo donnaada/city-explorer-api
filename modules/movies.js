@@ -16,7 +16,6 @@ class Movie {
 const getMovieData = async (req, res, next) => {
   try {
     let city = req.query.city;
-    console.log(req.query);
 
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&query=${city}`;
 
