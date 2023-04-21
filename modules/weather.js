@@ -8,7 +8,6 @@ class Forecast {
     this.low = weatherObj.low_temp;
     this.high = weatherObj.high_temp;
     this.temp = weatherObj.temp;
-    this.city_name = weatherObj.city_name;
   }
 }
 
