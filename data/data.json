@@ -1,0 +1,52 @@
+[
+    {
+      "species": "dog",
+      "name": "Buddy",
+      "breed": "Labrador Retriever"
+    },
+    {
+      "species": "cat",
+      "name": "Whiskers",
+      "breed": "Siamese"
+    },
+    {
+      "species": "hamster",
+      "name": "Nibbles",
+      "breed": "Syrian"
+    },
+    {
+      "species": "bird",
+      "name": "Polly",
+      "breed": "Parakeet"
+    },
+    {
+      "species": "rabbit",
+      "name": "Thumper",
+      "breed": "Dutch"
+    },
+    {
+      "species": "snake",
+      "name": "Slytherin",
+      "breed": "Ball Python"
+    },
+    {
+      "species": "turtle",
+      "name": "Leonardo",
+      "breed": "Red-Eared Slider"
+    },
+    {
+      "species": "fish",
+      "name": "Goldie",
+      "breed": "Goldfish"
+    },
+    {
+      "species": "guinea pig",
+      "name": "Gizmo",
+      "breed": "American"
+    },
+    {
+      "species": "ferret",
+      "name": "Bandit",
+      "breed": "Sable"
+    }
+]
