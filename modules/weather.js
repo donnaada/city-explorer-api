@@ -26,7 +26,7 @@ const getWeatherData = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 
 

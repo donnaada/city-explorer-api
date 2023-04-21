@@ -5,8 +5,8 @@ require('dotenv').config();
 const cors = require('cors');
 
 const app = express();
-const { getWeatherData } = require('./modules/weather')
-const { getMovieData } = require('./modules/movies')
+const { getWeatherData } = require('./modules/weather');
+const { getMovieData } = require('./modules/movies');
 
 app.use(cors());
 
@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
   res.status(200).send('Welcome to our server'); // where we want the request
 });
 
+
+// ?lat=15.1909825&lon=145.746743003024
 app.get('/weather', (req, res, next) => {
   try {
     getWeatherData(req, res);
@@ -26,6 +28,7 @@ app.get('/weather', (req, res, next) => {
   }
 });
 
+// ?city=saipan
 app.get('/movies', (req, res, next) => {
   try {
     getMovieData(req, res);
