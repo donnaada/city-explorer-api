@@ -5,13 +5,17 @@ let cache = {};
 
 const cacheData = async (response, key, apiUrl, dataPath, Constructor, daysCached) => {
   let milliseconds  = daysCached * 24 * 60 * 60 * 1000;
+
   if (cache[key] && (Date.now() - cache[key].timestamp) < milliseconds) {
     console.log('Cache hit', cache);
-    response.status(200).send(cache[key].data);
+    let date = new Date(cache[key].timestamp);
+    let formattedDate = date.toLocaleString();
+    response.status(200).send([cache[key].data, formattedDate]);
 
   } else {
 
     console.log('Cache miss', cache);
+
 
     let dataFromApi = await axios.get(apiUrl);
     let dataToSend = dataFromApi.data[dataPath].map(obj => new Constructor(obj));
@@ -21,7 +25,10 @@ const cacheData = async (response, key, apiUrl, dataPath, Constructor, daysCache
       timestamp: Date.now(),
     };
 
-    response.status(200).send(dataToSend);
+    let date = new Date(cache[key].timestamp);
+    let formattedDate = date.toLocaleString();
+
+    response.status(200).send([cache[key].data, formattedDate]);
   }
 };
 
