@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const app = express();
 const { getWeatherData } = require('./modules/weather');
+// const { getWeatherData } = require('./weather-starter');
 const { getMovieData } = require('./modules/movies');
 
 app.use(cors());
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 // ?lat=15.1909825&lon=145.746743003024
 app.get('/weather', (req, res, next) => {
   try {
+    // getWeatherData(req, res);
     getWeatherData(req, res);
 
   } catch (error) {

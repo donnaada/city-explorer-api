@@ -1,5 +1,9 @@
-const axios = require('axios');
+'use strict';
 
+// let axios = require('axios');
+let {cacheData} = require('../cache');
+
+// let cache = {};
 class Forecast {
   constructor(weatherObj) {
     this.date = weatherObj.datetime;
@@ -11,25 +15,20 @@ class Forecast {
   }
 }
 
-const getWeatherData = async (req, res, next) => {
+const getWeatherData = async (request, response) => {
   try {
-    let lon = req.query.lon;
-    let lat = req.query.lat;
+    let lon = request.query.lon;
+    let lat = request.query.lat;
+    const key = `weather-lat${lat}-lon${lon}`;
+    const url = `http://api.weatherbit.io/v2.0/forecast/daily/?key=${process.env.REACT_APP_WEATHERBIT_API_KEY}&lang=en&lat=${lat}&lon=${lon}&days=7`;
 
-    let url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.REACT_APP_WEATHERBIT_API_KEY}&lat=${lat}&lon=${lon}`;
+    cacheData(response, key, url, 'data', Forecast, 1);
 
-    let weatherFromAPI = await axios.get(url);
-
-    let dataToSend = weatherFromAPI.data.data.map(obj => new Forecast(obj));
-
-    res.status(200).send(dataToSend);
   } catch (error) {
-    next(error);
+    // next(error);
+    console.log(error);
   }
+
 };
 
-
-
-
-module.exports = { getWeatherData };
-
+module.exports = {getWeatherData};
