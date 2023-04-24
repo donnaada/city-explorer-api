@@ -9,7 +9,7 @@ const cacheData = async (response, key, apiUrl, dataPath, Constructor, daysCache
   if (cache[key] && (Date.now() - cache[key].timestamp) < milliseconds) {
     console.log('Cache hit', cache);
     let date = new Date(cache[key].timestamp);
-    let formattedDate = date.toLocaleString();
+    let formattedDate = date.toString();
     response.status(200).send([cache[key].data, formattedDate]);
 
   } else {
@@ -26,7 +26,7 @@ const cacheData = async (response, key, apiUrl, dataPath, Constructor, daysCache
     };
 
     let date = new Date(cache[key].timestamp);
-    let formattedDate = date.toLocaleString();
+    let formattedDate = date.toString();
 
     response.status(200).send([cache[key].data, formattedDate]);
   }
