@@ -1,4 +1,5 @@
-const axios = require('axios');
+// const axios = require('axios');
+const { cacheData} = require('../cache');
 
 class Movie {
   constructor(movieObj) {
@@ -19,11 +20,10 @@ const getMovieData = async (req, res, next) => {
 
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIEDB_API_KEY}&query=${city}`;
 
-    let moviesFromAxios = await axios.get(url);
+    let key = `moviedb-key-${city}`;
 
-    let moviesToSend = moviesFromAxios.data.results.map(obj => new Movie(obj));
+    cacheData(res, key, url, 'results', Movie, 7);
 
-    res.status(200).send(moviesToSend);
   } catch (error) {
     next(error);
   }
