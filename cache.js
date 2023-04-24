@@ -26,7 +26,7 @@ const cacheData = async (response, key, apiUrl, dataPath, Constructor, daysCache
     };
 
     let date = new Date(cache[key].timestamp);
-    let formattedDate = date.toString();
+    let formattedDate = date.toLocaleString();
 
     response.status(200).send([cache[key].data, formattedDate]);
   }
